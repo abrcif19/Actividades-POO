@@ -1,1 +1,53 @@
-   
+#include <cstdio>
+
+#include <cstring>
+
+class Animal {
+
+public:
+
+bool hasTail;
+
+char breed[50];
+
+int legs;
+
+char color[20];
+
+void mostrarInfo() {
+
+printf("Raza: %s\n", breed);
+
+printf("Color: %s\n", color);
+
+printf("Patas: %d\n", legs);
+
+printf("Tiene cola: %s\n", hasTail ? "Si": "No");
+
+}
+
+1;
+
+int main() {
+
+Animal perro;
+
+printf("Ingrese datos del perro:\n");
+
+printf("Raza: ");
+
+scanf("%49s", perro. breed);
+
+printf("Color: ");
+
+scanf("%19s", perro.color);
+
+perro.legs = 4;
+
+perro.hasTail = true;
+
+printf("\nInformación del animal:\n");
+
+perro.mostrarinfo();
+
+return 0;)   
