@@ -1,0 +1,57 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+double calcularInteresCompuesto(double capital, double tasa, int tiempo) {
+    // Fórmula del interés compuesto: A = P(1 + r)^t
+    return capital * pow(1 + tasa/100, tiempo);
+}
+
+int main() {
+    double capitalInicial, tasaInteres;
+    int tiempo;
+    char periodo;
+
+    cout << "CALCULADORA DE INTERES COMPUESTO" << endl;
+    cout << "--------------------------------" << endl;
+
+    cout << "Ingrese el capital inicial: ";
+    cin >> capitalInicial;
+
+    cout << "Ingrese la tasa de interes anual (%): ";
+    cin >> tasaInteres;
+
+    cout << "Ingrese el tiempo: ";
+    cin >> tiempo;
+
+    cout << "Es en años (a), meses (m) o dias (d)? ";
+    cin >> periodo;
+
+    switch(periodo) {
+        case 'm':
+            tasaInteres /= 12; // Convertir tasa anual a mensual
+            break;
+        case 'd':
+            tasaInteres /= 365; // Convertir tasa anual a diaria
+            break;
+        case 'a':
+            break;
+        default:
+            cout << "Periodo no valido. Usando años por defecto." << endl;
+    }
+
+    double montoFinal = calcularInteresCompuesto(capitalInicial, tasaInteres, tiempo);
+
+    // Mostrar resultados
+    cout << fixed << setprecision(2);
+    cout << "\nRESULTADO:" << endl;
+    cout << "Capital inicial: $" << capitalInicial << endl;
+    cout << "Tasa de interes: " << tasaInteres << "% por periodo" << endl;
+    cout << "Tiempo: " << tiempo << " periodos" << endl;
+    cout << "Monto final: $" << montoFinal << endl;
+    cout << "Intereses ganados: $" << montoFinal - capitalInicial << endl;
+
+    return 0;
+}
