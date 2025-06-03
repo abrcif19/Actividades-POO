@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+const int MAX = 10; // Tamaño máximo de la matriz
+
+void ingresarMatriz(int matriz[MAX][MAX], int n, char nombre) {
+    cout << "\nIngresando valores para la matriz " << nombre << ":\n";
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j) {
+            cout << "Elemento [" << i << "][" << j << "]: ";
+            cin >> matriz[i][j];
+        }
+}
+
+void mostrarMatriz(int matriz[MAX][MAX], int n, char nombre) {
+    cout << "\nMatriz " << nombre << ":\n";
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j)
+            cout << matriz[i][j] << "\t";
+        cout << "\n";
+    }
+}
+
+void multiplicarPorEscalar(int matriz[MAX][MAX], int n, int escalar, char nombre) {
+    cout << "\nMultiplicando matriz " << nombre << " por " << escalar << "...\n";
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            matriz[i][j] *= escalar;
+}
+
+int main() {
+    int n, escalar;
+    int A[MAX][MAX], B[MAX][MAX];
+
+    cout << "Ingrese el tamaño de las matrices cuadradas (máx " << MAX << "): ";
+    cin >> n;
+
+    if (n > MAX || n <= 0) {
+        cout << "Tamaño inválido.\n";
+        return 1;
+    }
+
+    ingresarMatriz(A, n, 'A');
+    ingresarMatriz(B, n, 'B');
+
+    mostrarMatriz(A, n, 'A');
+    mostrarMatriz(B, n, 'B');
+
+    cout << "\nIngrese un número para multiplicar ambas matrices: ";
+    cin >> escalar;
+
+    multiplicarPorEscalar(A, n, escalar, 'A');
+    multiplicarPorEscalar(B, n, escalar, 'B');
+
+    mostrarMatriz(A, n, 'A');
+    mostrarMatriz(B, n, 'B');
+
+    return 0;
+}
