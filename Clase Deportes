@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class DeportesConBalon {
+private:
+    string nombre;
+    string tipo_balon;
+    int num_jugadores;
+    string terreno_juego;
+    int puntuacion;
+public:
+    DeportesConBalon(string nom, string balon, int jugadores, string terreno) {
+        nombre = nom;
+        tipo_balon = balon;
+        num_jugadores = jugadores;
+        terreno_juego = terreno;
+        puntuacion = 0;
+    }
+    
+    void anotarPunto(int puntos = 1) {
+        puntuacion += puntos;
+        cout << "¡Punto anotado! Puntuación actual: " << puntuacion << endl;
+    }
+
+    
+    void mostrarInfo() {
+        cout << "Deporte: " << nombre << endl;
+        cout << "Balón: " << tipo_balon << endl;
+        cout << "Jugadores por equipo: " << num_jugadores << endl;
+        cout << "Terreno de juego: " << terreno_juego << endl;
+    }
+
+    
+    void reiniciarPartido() {
+        puntuacion = 0;
+        cout << "Partido reiniciado. Puntuación: 0" << endl;
+    }
+
+  
+    string toString() {
+        return nombre + " (jugado con " + tipo_balon + ")";
+    }
+};
+
+int main() {
+    
+    DeportesConBalon futbol("Fútbol", "balón de fútbol", 11, "cancha de césped");
+    DeportesConBalon baloncesto("Baloncesto", "balón de baloncesto", 5, "cancha de madera");
+
+    
+    cout << "--- Información del Fútbol ---" << endl;
+    futbol.mostrarInfo();
+    futbol.anotarPunto();
+    futbol.anotarPunto();
+    futbol.reiniciarPartido();
+
+    cout << "\n--- Información del Baloncesto ---" << endl;
+    cout << baloncesto.toString() << endl;
+    baloncesto.anotarPunto(2);
+    baloncesto.anotarPunto(3);
+
+    return 0;
+}
